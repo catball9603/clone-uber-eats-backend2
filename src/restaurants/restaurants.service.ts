@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/users/entities/user.entity';
@@ -176,15 +179,15 @@ export class RestaurantService {
         order: {
           isPromoted: 'DESC',
         },
-        take: 25,
-        skip: (page - 1) * 25,
+        take: 3,
+        skip: (page - 1) * 3,
       });
       const totalResults = await this.countRestaurants(category);
       return {
         ok: true,
         restaurants,
         category,
-        totalPages: Math.ceil(totalResults / 25),
+        totalPages: Math.ceil(totalResults / 3),
       };
     } catch {
       return {
@@ -251,14 +254,14 @@ export class RestaurantService {
         where: {
           name: Raw(name => `${name} ILIKE '%${query}%'`),
         },
-        skip: (page - 1) * 25,
-        take: 25,
+        skip: (page - 1) * 3,
+        take: 3,
       });
       return {
         ok: true,
         restaurants,
         totalResults,
-        totalPages: Math.ceil(totalResults / 25),
+        totalPages: Math.ceil(totalResults / 3),
       };
     } catch {
       return { ok: false, error: 'Could not search for restaurants' };
@@ -394,6 +397,7 @@ export class RestaurantService {
         { owner, id },
         { relations: ['menu', 'orders'] },
       );
+
       return {
         restaurant,
         ok: true,

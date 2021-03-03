@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { SetMetadata } from '@nestjs/common';
 import { UserRole } from 'src/users/entities/user.entity';
 

@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Field, InputType, ObjectType } from '@nestjs/graphql';
 import { IsString, Length } from 'class-validator';
 import { CoreEntity } from 'src/common/entities/core.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany } from 'typeorm';
 import { Restaurant } from './restaurant.entity';
 
 @InputType('CategoryInputType', { isAbstract: true })
@@ -11,7 +12,7 @@ export class Category extends CoreEntity {
   @Field(type => String)
   @Column({ unique: true })
   @IsString()
-  @Length(5)
+  @Length(10)
   name: string;
 
   @Field(type => String, { nullable: true })

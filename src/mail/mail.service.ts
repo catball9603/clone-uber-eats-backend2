@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import got from 'got';
 import * as FormData from 'form-data';
 import { Inject, Injectable } from '@nestjs/common';
@@ -18,9 +19,9 @@ export class MailService {
     const form = new FormData();
     form.append(
       'from',
-      `Nico from Nuber Eats <mailgun@${this.options.domain}>`,
+      `Lizzy from Nuber Eats <mailgun@${this.options.domain}>`,
     );
-    form.append('to', `nico@nomadcoders.co`);
+    form.append('to', `hokmahgrace@naver.com`);
     form.append('subject', subject);
     form.append('template', template);
     emailVars.forEach(eVar => form.append(`v:${eVar.key}`, eVar.value));
@@ -38,6 +39,7 @@ export class MailService {
       );
       return true;
     } catch (error) {
+      console.log(error);
       return false;
     }
   }
