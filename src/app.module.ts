@@ -56,7 +56,7 @@ import { UploadsModule } from './uploads/uploads.module';
             password: process.env.DB_PASSWORD,
             database: process.env.DB_NAME,
           }),
-      // ssl: { rejectUnauthorized: false },
+      ssl: { rejectUnauthorized: false },
       synchronize: process.env.NODE_ENV !== 'prod',
       logging:
         process.env.NODE_ENV !== 'prod' && process.env.NODE_ENV !== 'test',

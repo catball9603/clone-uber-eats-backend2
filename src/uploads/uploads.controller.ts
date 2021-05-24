@@ -21,7 +21,7 @@ export class UploadsController {
         secretAccessKey: process.env.AWS_SECRET,
       },
     });
-
+    //file upload
     try {
       const obejectName = `${Date.now() + file.originalname}`;
       await new AWS.S3()
